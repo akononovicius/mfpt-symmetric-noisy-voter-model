@@ -1,4 +1,4 @@
-# Mean first passage time in the symmetric noisy voter model with arbitrary initial and boundary conditions
+# Mean first passage times of the symmetric noisy voter model
 
 This repository contains code used to obtain numerical results reported in
 [1]. The code is effectively split into three parts: numerical simulation
