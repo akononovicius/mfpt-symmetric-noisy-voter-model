@@ -34,7 +34,7 @@ def get_passage_times(
     birth_rate: float = 0.5,
     death_rate: float = 0.5,
     dt: float = 1e-5,
-    seed: int = -1
+    seed: int = -1,
 ) -> np.ndarray:
     """Obtain FPTs from the noisy voter model.
 

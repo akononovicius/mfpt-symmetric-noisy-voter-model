@@ -13,11 +13,11 @@ fixed_x0 = 0.23
 fig = plt.figure(figsize=(6, 2.67))
 
 for idx, epsi in enumerate([0, 0.5, 1, 1.5, 2, 2.5]):
-    data = np.loadtxt(f"data/aa-epsi{10*epsi:.0f}.csv", delimiter=",", dtype=float)
+    data = np.loadtxt(f"data/aa-epsi{10 * epsi:.0f}.csv", delimiter=",", dtype=float)
     if data[-1, 0] > 1:
         data[-1, 0] = data[-1, 0] / 1e3
     theory_x = np.linspace(low_absorbing, high_absorbing)
-    theory_y = globals()[f"theory_epsi{10*epsi:.0f}"](
+    theory_y = globals()[f"theory_epsi{10 * epsi:.0f}"](
         theory_x, low_absorbing, high_absorbing
     )
 
@@ -40,7 +40,7 @@ for idx, epsi in enumerate([0, 0.5, 1, 1.5, 2, 2.5]):
     plt.text(
         0.97,
         0.92,
-        f"({chr(ord('a')+idx)})",
+        f"({chr(ord('a') + idx)})",
         horizontalalignment="right",
         verticalalignment="center",
         transform=plt.gca().transAxes,

@@ -17,7 +17,7 @@ plt.xlabel(r"$H$")
 plt.xticks(np.arange(0.05, 1.1, 0.3))
 
 for epsi in epsis:
-    data = np.loadtxt(f"data/x0max-epsi{10*epsi:.0f}.csv", delimiter=",", dtype=float)
+    data = np.loadtxt(f"data/x0max-epsi{10 * epsi:.0f}.csv", delimiter=",", dtype=float)
     plt.plot(data[:, 1], data[:, 2], label=rf"$\varepsilon={epsi:.1f}$")
 plt.plot(data[:, 1], (data[:, 0] + data[:, 1]) / 2, "k--", label=r"$(H+L)/2$")
 

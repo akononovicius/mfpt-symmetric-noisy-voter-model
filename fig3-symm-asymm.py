@@ -28,7 +28,7 @@ plt.xticks(np.arange(0.2, 0.83, 0.1))
 plt.xlabel(r"$x_0$")
 
 for epsi in epsis:
-    data = np.loadtxt(f"data/x0-symm-epsi{epsi*10:.0f}.csv", delimiter=",")
+    data = np.loadtxt(f"data/x0-symm-epsi{epsi * 10:.0f}.csv", delimiter=",")
     plt.plot(data[:, 0], data[:, 1], label=rf"$\varepsilon={epsi:.1f}$")
 
 plt.text(
@@ -57,7 +57,7 @@ plt.xticks(np.arange(0.1, 0.73, 0.1))
 plt.xlabel(r"$x_0$")
 
 for epsi in epsis:
-    data = np.loadtxt(f"data/x0-asymm-epsi{epsi*10:.0f}.csv", delimiter=",")
+    data = np.loadtxt(f"data/x0-asymm-epsi{epsi * 10:.0f}.csv", delimiter=",")
     plt.plot(data[:, 0], data[:, 1], label=rf"$\varepsilon={epsi:.1f}$")
 
 plt.text(
