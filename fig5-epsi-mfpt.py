@@ -21,7 +21,7 @@ def __create_linear_step_mask(
     return mask
 
 
-show_grid = False
+show_grid = True
 main_plot_min_step = 5
 
 low_absorbing = 0.03

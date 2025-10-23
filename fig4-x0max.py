@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-show_grid = False
+show_grid = True
 show_legend = False
 
 epsis = [0, 1.6, 3.2]

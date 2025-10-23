@@ -3,7 +3,7 @@ import numpy as np
 
 from theory.ra import *
 
-show_grid = False
+show_grid = True
 
 low_reflecting = 0.03
 high_absorbing = 0.63

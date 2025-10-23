@@ -3,7 +3,7 @@ import numpy as np
 
 from theory.aa import *
 
-show_grid = False
+show_grid = True
 
 low_absorbing = 0.03
 high_absorbing = 0.63

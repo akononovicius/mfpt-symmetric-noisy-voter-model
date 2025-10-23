@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-show_grid = False
+show_grid = True
 show_legend = False
 show_titles = False
 
