@@ -3,7 +3,26 @@ import numpy as np
 
 from theory.ra import theory_general as theory_ra_general
 
+
+def __create_linear_step_mask(
+    data: np.ndarray, smallest_step: float, offset: int = 0
+) -> np.ndarray:
+    mask = np.zeros(len(data), dtype=bool)
+    if smallest_step <= 0:
+        mask[:] = True
+        return mask
+
+    last_shown = -np.inf
+    for idx, val in enumerate(data[offset:, 0]):
+        if val - last_shown >= smallest_step:
+            mask[offset + idx] = True
+            last_shown = val
+
+    return mask
+
+
 show_grid = False
+main_plot_min_step = 5
 
 low_absorbing = 0.03
 low_reflecting = 0.03
@@ -40,6 +59,8 @@ theory_aa_2 = np.exp(
     data_aa[approx_aa_mask, 0] / approx_aa_factor_k + approx_aa_factor_c
 )
 
+main_aa_plot_mask = __create_linear_step_mask(data_aa, main_plot_min_step)
+
 plt.semilogy()
 plt.minorticks_off()
 plt.text(
@@ -52,7 +73,7 @@ plt.text(
 )
 plt.plot(theory_aa[:, 0], theory_aa[:, 1], "k")
 plt.plot(data_aa[approx_aa_mask, 0], theory_aa_2, color="#999999")
-plt.plot(data_aa[:, 0], data_aa[:, 1], "rs")
+plt.plot(data_aa[main_aa_plot_mask, 0], data_aa[main_aa_plot_mask, 1], "rs")
 
 # Overal RA dependence
 plt.subplot(122)
@@ -66,6 +87,8 @@ plt.yticks([1e0, 1e1, 1e2, 1e3, 1e4])
 data_ra = np.loadtxt("data/epsi-mfpt-ra.csv", delimiter=",", dtype=float)
 data_ra = data_ra[np.argsort(data_ra[:, 0])]
 theory_ra = np.loadtxt("theory/epsi-mfpt-ra.csv", delimiter=",", dtype=float)
+
+main_ra_plot_mask = __create_linear_step_mask(data_ra, main_plot_min_step)
 
 approx_ra_mask = data_ra[:, 0] > theory_ra[-1, 0]
 approx_ra_mask[np.argmax(approx_ra_mask) - 1] = True
@@ -86,7 +109,7 @@ plt.text(
 )
 plt.plot(theory_ra[:, 0], theory_ra[:, 1], "k")
 plt.plot(data_ra[approx_ra_mask, 0], theory_ra_2, color="#999999")
-plt.plot(data_ra[:, 0], data_ra[:, 1], "rs")
+plt.plot(data_ra[main_ra_plot_mask, 0], data_ra[main_ra_plot_mask, 1], "rs")
 
 # inset for AA dependence zoom in
 inset_aa_ax = fig.add_axes((0.14, 0.62, 0.2, 0.3))
