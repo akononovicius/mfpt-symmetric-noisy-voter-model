@@ -39,7 +39,7 @@ for idx, epsi in enumerate([0, 0.5, 1, 1.5, 2, 2.5]):
         plt.gca().set_yticklabels([])
     plt.text(
         0.97,
-        0.92,
+        0.9,
         f"({chr(ord('a') + idx)})",
         horizontalalignment="right",
         verticalalignment="center",
@@ -48,5 +48,6 @@ for idx, epsi in enumerate([0, 0.5, 1, 1.5, 2, 2.5]):
     plt.plot(theory_x, theory_y, "k")
     plt.plot(data[:, 0], data[:, 1], "rs")
 
+plt.tight_layout()
 plt.savefig("figs/fig2-ra.pdf", format="pdf")
 plt.close()

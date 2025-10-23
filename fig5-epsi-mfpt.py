@@ -135,5 +135,6 @@ inset_ra_ax.plot(
 )
 inset_ra_ax.plot(data_ra[inset_ra_data_mask, 0], data_ra[inset_ra_data_mask, 1], "rs")
 
+plt.tight_layout()
 plt.savefig("figs/fig5-epsi-mfpt.pdf", format="pdf")
 plt.close()

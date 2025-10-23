@@ -70,5 +70,6 @@ plt.text(
 if show_legend:
     plt.legend(loc=0, ncols=2, fontsize="small").get_frame().set_linewidth(0.4)
 
+plt.tight_layout()
 plt.savefig("figs/fig3-sym-asym.pdf", format="pdf")
 plt.close()
