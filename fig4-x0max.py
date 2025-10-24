@@ -5,6 +5,7 @@ show_grid = False
 show_legend = False
 
 epsis = [0, 1.6, 3.2]
+markers = list("soD")
 
 fig = plt.figure(figsize=(3, 2))
 
@@ -16,9 +17,17 @@ plt.yticks(np.arange(0.05, 1.1, 0.225))
 plt.xlabel(r"$H$")
 plt.xticks(np.arange(0.05, 1.1, 0.3))
 
-for epsi in epsis:
+for idx, epsi in enumerate(epsis):
     data = np.loadtxt(f"data/x0max-epsi{10 * epsi:.0f}.csv", delimiter=",", dtype=float)
-    plt.plot(data[:, 1], data[:, 2], label=rf"$\varepsilon={epsi:.1f}$")
+    odd_indices = np.arange(1, len(data), 2)
+    extra_indices = np.array([len(data) - 2, len(data) - 1])
+    indices_to_plot = np.unique(np.concatenate((odd_indices, extra_indices)))
+    plt.plot(
+        data[indices_to_plot, 1],
+        data[indices_to_plot, 2],
+        markers[idx],
+        label=rf"$\varepsilon={epsi:.1f}$",
+    )
 plt.plot(data[:, 1], (data[:, 0] + data[:, 1]) / 2, "k--", label=r"$(H+L)/2$")
 
 if show_legend:
